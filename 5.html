@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>手速测试 | 点击反应力</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: system-ui, sans-serif;
+  background: #f5f7fa;
+  min-height: 100vh;
+  overflow: hidden;
+}
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.top-info {
+  padding: 15px;
+  text-align: center;
+}
+.title {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 8px;
+}
+.desc {
+  font-size: 14px;
+  color: #666;
+}
+/* 点击区域 */
+.game-area {
+  flex: 1;
+  position: relative;
+  background: #ffffff;
+  margin: 10px;
+  border-radius: 16px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+}
+/* 目标红点 */
+.dot {
+  width: 50px;
+  height: 50px;
+  background: #e53935;
+  border-radius: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+/* 结果面板 */
+.result-box {
+  padding: 15px;
+  text-align: center;
+}
+.item {
+  font-size: 15px;
+  color: #444;
+  margin: 4px 0;
+}
+.average {
+  font-size: 18px;
+  color: #222;
+  font-weight: bold;
+  margin-top: 10px;
+}
+.btn {
+  margin-top: 12px;
+  padding: 12px 30px;
+  border: none;
+  background: #409eff;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 16px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="top-info">
+    <div class="title">手速反应测试</div>
+    <div class="desc">连续点击5个随机红点，测试你的反应速度</div>
+    <div class="desc" id="roundTip">剩余次数：5</div>
+  </div>
+
+  <div class="game-area" id="gameBox">
+    <div class="dot" id="targetDot"></div>
+  </div>
+
+  <div class="result-box">
+    <div id="list"></div>
+    <div class="average" id="avgText"></div>
+    <button class="btn" id="restartBtn" onclick="startTest()" style="display:none;">重新测试</button>
+  </div>
+</div>
+
+<script>
+const gameBox = document.getElementById('gameBox');
+const dot = document.getElementById('targetDot');
+const roundTip = document.getElementById('roundTip');
+const listDom = document.getElementById('list');
+const avgText = document.getElementById('avgText');
+const restartBtn = document.getElementById('restartBtn');
+
+let totalRound = 5;
+let nowRound = 0;
+let startTime = 0;
+let timeList = [];
+let isClick = false;
+
+// 开始测试
+function startTest() {
+  nowRound = 0;
+  timeList = [];
+  listDom.innerHTML = '';
+  avgText.innerText = '';
+  restartBtn.style.display = 'none';
+  roundTip.innerText = `剩余次数：${totalRound}`;
+  setTimeout(randomDot, 800);
+}
+
+// 随机生成红点位置
+function randomDot() {
+  isClick = false;
+  const boxW = gameBox.clientWidth;
+  const boxH = gameBox.clientHeight;
+  const dotSize = 50;
+
+  // 随机范围，避免贴边
+  let x = Math.random() * (boxW - dotSize) + dotSize/2;
+  let y = Math.random() * (boxH - dotSize) + dotSize/2;
+
+  dot.style.left = x + 'px';
+  dot.style.top = y + 'px';
+  dot.style.display = 'block';
+
+  // 记录出现时间
+  startTime = Date.now();
+}
+
+// 点击红点
+dot.addEventListener('click', () => {
+  if(isClick) return;
+  isClick = true;
+
+  // 计算毫秒耗时
+  const cost = Date.now() - startTime;
+  nowRound++;
+  timeList.push(cost);
+
+  // 显示当前回合
+  const p = document.createElement('div');
+  p.className = 'item';
+  p.innerText = `第${nowRound}次：${cost} 毫秒`;
+  listDom.appendChild(p);
+
+  dot.style.display = 'none';
+  roundTip.innerText = `剩余次数：${totalRound - nowRound}`;
+
+  // 判断是否结束
+  if(nowRound >= totalRound) {
+    calcAvg();
+  } else {
+    setTimeout(randomDot, 600);
+  }
+});
+
+// 计算平均值
+function calcAvg() {
+  let sum = 0;
+  timeList.forEach(t => sum += t);
+  const avg = (sum / totalRound).toFixed(0);
+  avgText.innerText = `✅ 平均反应时间：${avg} 毫秒`;
+  restartBtn.style.display = 'inline-block';
+}
+
+// 初始化自动开始
+window.onload = startTest;
+</script>
+</body>
+</html>
