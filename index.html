@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALTOV PLUS | Premium Financial Consulting</title>
+    <meta name="description" content="ALTOV PLUS provides professional financial information consulting, market analysis, investment strategies and risk management services worldwide.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // 主色调调整为浅绿色系
+                        primary: '#10B981',      // 翡翠绿（主色）
+                        secondary: '#F97316',    // 橙红色（辅助色）
+                        accent: '#8B5CF6',       // 紫罗兰色（强调色）
+                        dark: '#111827',         // 深灰（文字）
+                        light: '#ECFDF5',        // 浅绿背景（主背景）
+                        neutral: '#4B5563',      // 中灰（次要文字）
+                        // 扩展浅绿色系
+                        greenLight: '#ECFDF5',
+                        greenMid: '#D1FAE5',
+                        greenDark: '#A7F3D0',
+                        greenDeeper: '#6EE7B7',
+                        // 新增搭配色
+                        blueSoft: '#DBEAFE',
+                        purpleSoft: '#F3E8FF',
+                        orangeSoft: '#FFF7ED'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+            }
+            .btn-gradient {
+                background: linear-gradient(135deg, #10B981, #8B5CF6); /* 绿+紫渐变 */
+            }
+            .section-gradient {
+                background: linear-gradient(135deg, #ECFDF5, #D1FAE5); /* 浅绿色渐变 */
+            }
+            .page {
+                display: none;
+            }
+            .page.active {
+                display: block;
+            }
+            /* 图片占位样式（调整为浅绿色系） */
+            .img-placeholder {
+                background-color: #D1FAE5;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #065F46;
+                font-size: 14px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<!-- 全局背景改为浅绿色 -->
+<body class="font-sans bg-light text-dark antialiased">
+
+<!-- Navigation Bar -->
+<header class="fixed w-full top-0 z-50 bg-greenLight/95 shadow-sm backdrop-blur-md border-b border-greenDeeper/20">
+    <div class="container mx-auto px-4 md:px-6">
+        <div class="flex items-center justify-between h-16 md:h-20">
+            <a href="#home" class="text-2xl font-bold text-primary">
+                ALTOV <span class="text-secondary">PLUS</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-primary hover:text-accent transition-colors font-medium">Home</a>
+                <a href="#about" class="nav-link text-primary hover:text-accent transition-colors font-medium">About Us</a>
+                <a href="#services" class="nav-link text-primary hover:text-accent transition-colors font-medium">Services</a>
+                <a href="#advantages" class="nav-link text-primary hover:text-accent transition-colors font-medium">Advantages</a>
+                <a href="#contact" class="nav-link text-primary hover:text-accent transition-colors font-medium">Contact</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="menuBtn" class="md:hidden text-2xl text-primary">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-greenLight border-t border-greenDeeper/30 py-3">
+        <div class="container mx-auto px-4 space-y-3">
+            <a href="#home" class="mobile-nav-link block py-2 text-primary hover:text-accent">Home</a>
+            <a href="#about" class="mobile-nav-link block py-2 text-primary hover:text-accent">About Us</a>
+            <a href="#services" class="mobile-nav-link block py-2 text-primary hover:text-accent">Services</a>
+            <a href="#advantages" class="mobile-nav-link block py-2 text-primary hover:text-accent">Advantages</a>
+            <a href="#contact" class="mobile-nav-link block py-2 text-primary hover:text-accent">Contact</a>
+        </div>
+    </div>
+</header>
+
+<!-- All Pages Container -->
+<main class="pt-20 md:pt-24">
+    <!-- ====================== HOME PAGE ====================== -->
+    <section id="home" class="page active min-h-screen bg-light">
+        <!-- Hero Banner (调整为绿+橙渐变) -->
+        <div class="relative bg-gradient-to-r from-primary to-secondary py-20 md:py-32 text-white overflow-hidden">
+            <div class="container mx-auto px-4 md:px-6 relative z-10">
+                <div class="grid md:grid-cols-2 gap-10 items-center">
+                    <div>
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-shadow mb-6">
+                            Trusted <span class="text-blueSoft">Financial</span> Consulting Services
+                        </h1>
+                        <p class="text-lg md:text-xl opacity-90 mb-8 max-w-xl">
+                            ALTOV PLUS delivers professional financial information, global market analysis, personalized investment strategies and risk management solutions for clients worldwide. With over 20 years of industry experience, we help individuals and businesses navigate complex financial landscapes with confidence.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="#services" class="px-8 py-3 btn-gradient text-white font-semibold rounded-lg hover:opacity-90 transition text-center">
+                                Our Services
+                            </a>
+                            <a href="#contact" class="px-8 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition text-center">
+                                Contact Us
+                            </a>
+                        </div>
+                    </div>
+                    <div class="rounded-2xl overflow-hidden shadow-2xl">
+                        <div class="img-placeholder w-full h-80 md:h-96">
+                            <div class="p-4">
+                                <i class="fa fa-line-chart text-4xl mb-2"></i>
+                                <p>Trusted Financial Consulting</p>
+                                <p>Global Market Expertise</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image Showcase (背景改为浅绿) -->
+        <section class="py-16 bg-greenLight">
+            <div class="container mx-auto px-4 md:px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Our Business Scope</h2>
+                    <p class="text-neutral max-w-2xl mx-auto">Professional financial solutions powered by global market intelligence and cutting-edge analytical tools</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="rounded-xl overflow-hidden shadow-lg card-hover bg-white">
+                        <div class="img-placeholder w-full h-60">
+                            <div class="p-4">
+                                <i class="fa fa-globe text-4xl mb-2"></i>
+                                <p>Global Financial Consulting</p>
+                            </div>
+                        </div>
+                        <div class="p-5 bg-white">
+                            <h3 class="font-bold text-primary text-lg">Global Financial Consulting</h3>
+                            <p class="text-neutral mt-2 text-sm">Cross-border financial planning, international tax optimization, and global wealth management for high-net-worth individuals and enterprises.</p>
+                        </div>
+                    </div>
+                    <div class="rounded-xl overflow-hidden shadow-lg card-hover bg-white">
+                        <div class="img-placeholder w-full h-60">
+                            <div class="p-4">
+                                <i class="fa fa-bar-chart text-4xl mb-2"></i>
+                                <p>Market Data Analysis</p>
+                            </div>
+                        </div>
+                        <div class="p-5 bg-white">
+                            <h3 class="font-bold text-primary text-lg">Market Data Analysis</h3>
+                            <p class="text-neutral mt-2 text-sm">Real-time data monitoring, predictive analytics, and trend identification across stocks, forex, commodities, and cryptocurrency markets.</p>
+                        </div>
+                    </div>
+                    <div class="rounded-xl overflow-hidden shadow-lg card-hover bg-white">
+                        <div class="img-placeholder w-full h-60">
+                            <div class="p-4">
+                                <i class="fa fa-pie-chart text-4xl mb-2"></i>
+                                <p>Custom Investment Solutions</p>
+                            </div>
+                        </div>
+                        <div class="p-5 bg-white">
+                            <h3 class="font-bold text-primary text-lg">Custom Investment Solutions</h3>
+                            <p class="text-neutral mt-2 text-sm">Tailored portfolios based on risk appetite, investment horizon, and financial goals with regular performance reviews.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- ====================== ABOUT US ====================== -->
+    <section id="about" class="page py-16 md:py-24 bg-greenLight min-h-screen">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">About ALTOV PLUS</h2>
+                <div class="w-20 h-1 bg-secondary mx-auto"></div>
+                <p class="text-neutral max-w-2xl mx-auto mt-4">Professional financial information consulting firm with global vision and local expertise, established in 2005</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                <div class="rounded-xl overflow-hidden shadow-xl">
+                    <div class="img-placeholder w-full h-80 md:h-96">
+                        <div class="p-4">
+                            <i class="fa fa-building text-4xl mb-2"></i>
+                            <p>Our Company</p>
+                            <p>Established 2005 | Global Presence</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-primary mb-6">Who We Are</h3>
+                    <p class="text-neutral leading-relaxed mb-4">
+                        ALTOV PLUS is a leading professional financial information consulting firm with headquarters in Chelmsford, England, and regional offices in New York, Hong Kong, and Dubai. Since 2005, we have been dedicated to providing high-quality, reliable financial services to individuals, families and enterprises across 30+ countries.
+                    </p>
+                    <p class="text-neutral leading-relaxed mb-4">
+                        Our team of 50+ certified financial experts brings together diverse backgrounds in investment banking, asset management, risk analysis, and financial planning. Each consultant holds advanced certifications including CFA (Chartered Financial Analyst), CFP (Certified Financial Planner), and FRM (Financial Risk Manager).
+                    </p>
+                    <p class="text-neutral leading-relaxed mb-4">
+                        We adhere to the principles of professionalism, integrity, and client-centric service, helping clients achieve stable, sustainable and long-term financial growth. Our approach combines data-driven analysis with personalized service to create solutions that align with your unique circumstances.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mt-8 mb-6">
+                        <div class="flex items-center space-x-2">
+                            <i class="fa fa-check-circle text-secondary text-xl"></i>
+                            <span class="font-medium">CFA/FRM Certified Team</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fa fa-check-circle text-secondary text-xl"></i>
+                            <span class="font-medium">Global Market Coverage</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fa fa-check-circle text-secondary text-xl"></i>
+                            <span class="font-medium">Regulatory Compliance</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fa fa-check-circle text-secondary text-xl"></i>
+                            <span class="font-medium">Client-Centric Approach</span>
+                        </div>
+                    </div>
+                    <p class="text-neutral font-medium">
+                        Our mission is to empower clients with the knowledge and strategies needed to make informed financial decisions in an increasingly complex global economy.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 公司里程碑 (调整为浅紫背景) -->
+            <div class="mt-12 bg-purpleSoft rounded-xl p-8 shadow-md">
+                <h3 class="text-xl font-bold text-primary mb-6 text-center">Our Milestones</h3>
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-greenMid rounded-full flex items-center justify-center mx-auto mb-3">
+                            <span class="font-bold text-primary text-xl">2005</span>
+                        </div>
+                        <h4 class="font-semibold text-primary">Founded</h4>
+                        <p class="text-neutral text-sm">Established in Chelmsford, UK</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-greenMid rounded-full flex items-center justify-center mx-auto mb-3">
+                            <span class="font-bold text-primary text-xl">2010</span>
+                        </div>
+                        <h4 class="font-semibold text-primary">Global Expansion</h4>
+                        <p class="text-neutral text-sm">Opened New York & Hong Kong offices</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-greenMid rounded-full flex items-center justify-center mx-auto mb-3">
+                            <span class="font-bold text-primary text-xl">2018</span>
+                        </div>
+                        <h4 class="font-semibold text-primary">50+ Experts</h4>
+                        <p class="text-neutral text-sm">Expanded team to 50+ financial experts</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-greenMid rounded-full flex items-center justify-center mx-auto mb-3">
+                            <span class="font-bold text-primary text-xl">2023</span>
+                        </div>
+                        <h4 class="font-semibold text-primary">Award Winning</h4>
+                        <p class="text-neutral text-sm">Received Best Financial Consultancy Award</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== SERVICES ====================== -->
+    <section id="services" class="page py-16 md:py-24 section-gradient min-h-screen">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Our Services</h2>
+                <p class="text-neutral max-w-2xl mx-auto">Comprehensive financial consulting services tailored to your personal and business needs, backed by cutting-edge technology and industry expertise</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl p-8 shadow-lg card-hover">
+                    <div class="w-16 h-16 bg-greenMid rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-line-chart text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Financial Market Analysis</h3>
+                    <p class="text-neutral mb-4">
+                        Our real-time global market analysis service provides 24/7 monitoring of major financial markets, including stocks, bonds, forex, commodities, and cryptocurrencies. We deliver actionable insights through:
+                    </p>
+                    <ul class="text-neutral text-sm space-y-2 mb-4">
+                        <li class="flex items-start">
+                            <i class="fa fa-angle-right text-secondary mt-1 mr-2"></i>
+                            <span>Daily market briefings and weekly in-depth reports</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-angle-right text-secondary mt-1 mr-2"></i>
+                            <span>Technical and fundamental analysis of key assets</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-angle-right text-secondary mt-1 mr-2"></i>
+                            <span>Customized alerts for market-moving events</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-angle-right text-secondary mt-1 mr-2"></i>
+                            <span>Competitor analysis and industry benchmarking</span>
+                        </li>
+                    </ul>
+                    <div class="img-placeholder w-full h-44 rounded-md mt-4">
+                        <div class="p-2">
+                            <i class="fa fa-area-chart text-3xl mb-2"></i>
+                            <p>Real-time Market Monitoring</p>
+                            <p>Advanced Analytical Tools</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-8 shadow-lg card-hover">
+                    <div class="w-16 h-16 bg-greenMid rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-briefcase text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Investment Consulting</h3>
+                    <p class="text-neutral mb-4">
+                        Our personalized investment consulting service helps you build and manage a diversified portfolio aligned with your financial goals. Our approach includes:
+                    </p>
+                    <ul class="text-neutral text-sm space-y-2 mb-4">
+                        <li class="flex items-start">
+                            <i class="fa fa-angle-right text-secondary mt-1 mr-2"></i>
+                            <span>Comprehensive financial goal assessment</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-angle-right text-secondary mt-1 mr-2"></i>
+                            <span>Risk tolerance evaluation and profiling</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-angle-right text-secondary mt-1 mr-2"></i>
+                            <span>Asset allocation strategy development</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-angle-right text-secondary mt-1 mr-2"></i>
+                            <span>Quarterly portfolio reviews and rebalancing</span>
+                        </li>
+                    </ul>
+                    <div class="img-placeholder w-full h-44 rounded-md mt-4">
+                        <div class="p-2">
+                            <i class="fa fa-pie-chart text-3xl mb-2"></i>
+                            <p>Custom Investment Portfolios</p>
+                            <p>Risk-Adjusted Returns</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-8 shadow-lg card-hover">
+                    <div class="w-16 h-16 bg-greenMid rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-shield text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Risk Management</h3>
+                    <p class="text-neutral mb-4">
+                        Our professional risk management service protects your assets against market volatility and unexpected events. We offer:
+                    </p>
+                    <ul class="text-neutral text-sm space-y-2 mb-4">
+                        <li class="flex items-start">
+                            <i class="fa fa-angle-right text-secondary mt-1 mr-2"></i>
+                            <span>Comprehensive risk assessment and identification</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-angle-right text-secondary mt-1 mr-2"></i>
+                            <span>Hedging strategies for currency and interest rate risk</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-angle-right text-secondary mt-1 mr-2"></i>
+                            <span>Insurance and protection planning</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fa fa-angle-right text-secondary mt-1 mr-2"></i>
+                            <span>Contingency planning for market downturns</span>
+                        </li>
+                    </ul>
+                    <div class="img-placeholder w-full h-44 rounded-md mt-4">
+                        <div class="p-2">
+                            <i class="fa fa-shield text-3xl mb-2"></i>
+                            <p>Comprehensive Risk Protection</p>
+                            <p>Asset Security Strategies</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 服务优势 (调整为浅橙背景) -->
+            <div class="mt-16 bg-orangeSoft rounded-xl p-8 shadow-lg">
+                <h3 class="text-xl font-bold text-primary mb-6 text-center">Why Our Services Stand Out</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-greenMid rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa fa-clock-o text-3xl text-primary"></i>
+                        </div>
+                        <h4 class="font-semibold text-primary mb-2">24/7 Support</h4>
+                        <p class="text-neutral text-sm">Round-the-clock access to our financial experts for urgent matters</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-greenMid rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa fa-lock text-3xl text-primary"></i>
+                        </div>
+                        <h4 class="font-semibold text-primary mb-2">Data Security</h4>
+                        <p class="text-neutral text-sm">Bank-level encryption and strict confidentiality protocols</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-20 h-20 bg-greenMid rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa fa-tachometer text-3xl text-primary"></i>
+                        </div>
+                        <h4 class="font-semibold text-primary mb-2">Performance Tracking</h4>
+                        <p class="text-neutral text-sm">Real-time performance monitoring with transparent reporting</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== ADVANTAGES ====================== -->
+    <section id="advantages" class="page py-16 md:py-24 bg-greenLight min-h-screen">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Our Advantages</h2>
+                <div class="w-20 h-1 bg-secondary mx-auto"></div>
+                <p class="text-neutral max-w-2xl mx-auto mt-4">Why choose ALTOV PLUS as your financial consulting partner in an increasingly competitive market</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-10 mb-12">
+                <div class="bg-white p-8 rounded-xl shadow-md card-hover border-l-4 border-primary">
+                    <h3 class="text-xl font-bold text-primary mb-4">Expert Professional Team</h3>
+                    <p class="text-neutral">
+                        Our consultants are certified financial experts with an average of 15+ years of industry experience and deep market insights across global financial markets. We continuously invest in professional development to stay ahead of regulatory changes and market trends, ensuring you receive the most current and accurate guidance available.
+                    </p>
+                    <div class="mt-4 flex items-center text-sm text-neutral">
+                        <i class="fa fa-trophy text-secondary mr-2"></i>
+                        <span>50+ CFA/FRM/CFP certified professionals</span>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-md card-hover border-l-4 border-primary">
+                    <h3 class="text-xl font-bold text-primary mb-4">Global Market Resources</h3>
+                    <p class="text-neutral">
+                        We provide real-time global financial data from 100+ exchanges worldwide and comprehensive analysis powered by proprietary AI algorithms. Our global network of research partners ensures you have access to timely, accurate information to support your accurate and timely decision-making across international markets.
+                    </p>
+                    <div class="mt-4 flex items-center text-sm text-neutral">
+                        <i class="fa fa-globe text-secondary mr-2"></i>
+                        <span>Coverage in 30+ countries across 6 continents</span>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-md card-hover border-l-4 border-primary">
+                    <h3 class="text-xl font-bold text-primary mb-4">Customized Solutions</h3>
+                    <p class="text-neutral">
+                        All services are fully customized to match your unique financial needs, risk tolerance and long-term development goals. We reject one-size-fits-all approaches and instead develop tailored strategies that evolve with your changing circumstances and market conditions.
+                    </p>
+                    <div class="mt-4 flex items-center text-sm text-neutral">
+                        <i class="fa fa-user text-secondary mr-2"></i>
+                        <span>100% personalized financial strategies</span>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-md card-hover border-l-4 border-primary">
+                    <h3 class="text-xl font-bold text-primary mb-4">Long-Term Partnership</h3>
+                    <p class="text-neutral">
+                        We build trusted long-term relationships with clients, with an average client retention rate of 92%. Our dedicated account managers provide ongoing support to adapt your financial strategy as your life circumstances, goals, and the market environment change, supporting sustainable financial growth and long-term success.
+                    </p>
+                    <div class="mt-4 flex items-center text-sm text-neutral">
+                        <i class="fa fa-handshake-o text-secondary mr-2"></i>
+                        <span>92% client retention rate (industry avg: 75%)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 客户评价 (浅蓝背景) -->
+            <div class="mt-8 mb-16">
+                <h3 class="text-2xl font-bold text-primary mb-8 text-center">What Our Clients Say</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-blueSoft p-6 rounded-xl shadow-md card-hover">
+                        <div class="flex items-center mb-4">
+                            <div class="text-secondary">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-neutral italic mb-4">"ALTOV PLUS transformed our investment strategy and helped us achieve consistent returns even during market downturns. Their personalized approach and deep market knowledge are unmatched."</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-greenMid rounded-full flex items-center justify-center mr-3">
+                                <span class="font-bold text-primary">JD</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-primary">John Doe</h4>
+                                <p class="text-neutral text-sm">CEO, Tech Enterprise</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-blueSoft p-6 rounded-xl shadow-md card-hover">
+                        <div class="flex items-center mb-4">
+                            <div class="text-secondary">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-neutral italic mb-4">"After working with ALTOV PLUS for 5 years, our family's financial portfolio has grown by 78% with significantly lower risk than we previously experienced. Their risk management strategies are exceptional."</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-greenMid rounded-full flex items-center justify-center mr-3">
+                                <span class="font-bold text-primary">SM</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-primary">Sarah Miller</h4>
+                                <p class="text-neutral text-sm">High-Net-Worth Individual</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-blueSoft p-6 rounded-xl shadow-md card-hover">
+                        <div class="flex items-center mb-4">
+                            <div class="text-secondary">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                            </div>
+                        </div>
+                        <p class="text-neutral italic mb-4">"As a small business owner, I needed clear, actionable financial advice. ALTOV PLUS provided exactly that, helping us optimize our cash flow and plan for sustainable growth."</p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-greenMid rounded-full flex items-center justify-center mr-3">
+                                <span class="font-bold text-primary">TK</span>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-primary">Thomas Kim</h4>
+                                <p class="text-neutral text-sm">Small Business Owner</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8">
+                <div class="img-placeholder w-full max-w-4xl mx-auto rounded-xl shadow-xl h-60 md:h-80">
+                    <div class="p-4">
+                        <i class="fa fa-users text-4xl mb-2"></i>
+                        <p>Trusted by 1000+ Clients Worldwide</p>
+                        <p>92% Client Retention Rate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== CONTACT US ====================== -->
+    <section id="contact" class="page py-16 md:py-24 bg-primary text-white min-h-screen">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Contact Us</h2>
+                <p class="opacity-80 max-w-2xl mx-auto">We are ready to provide you with professional financial consulting services tailored to your unique needs</p>
+            </div>
+
+            <div class="grid lg:grid-cols-5 gap-10">
+                <div class="lg:col-span-2 bg-white/10 backdrop-blur-sm rounded-xl p-8 shadow-lg">
+                    <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 bg-greenMid rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa fa-map-marker text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">Our Address</h4>
+                                <p class="opacity-80">74 Duke St, Chelmsford, Essex CM1 1HS, England</p>
+                                <p class="opacity-80 text-sm mt-1">Regulated by the Financial Conduct Authority (FCA)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 bg-greenMid rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa fa-phone text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">Phone Number</h4>
+                                <p class="opacity-80">+44 (0) 1245 260 888</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="w-10 h-10 bg-greenMid rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fa fa-envelope text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">Email Address</h4>
+                                <p class="opacity-80">info@altovplus.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-3 bg-white rounded-xl p-8 shadow-lg text-dark">
+                    <h3 class="text-2xl font-bold mb-6 text-primary">Send Us a Message</h3>
+                    <form class="space-y-4">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-neutral mb-1" for="name">Full Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Your Name">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-neutral mb-1" for="email">Email Address</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="your@email.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-neutral mb-1" for="subject">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Message Subject">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-neutral mb-1" for="message">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Your Message"></textarea>
+                        </div>
+                        <button type="submit" class="px-8 py-3 btn-gradient text-white font-semibold rounded-lg hover:opacity-90 transition w-full md:w-auto">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-12">
+    <div class="container mx-auto px-4 md:px-6">
+        <div class="grid md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-2xl font-bold mb-4">ALTOV <span class="text-secondary">PLUS</span></h3>
+                <p class="text-gray-400 mb-4">Trusted financial consulting services for individuals and businesses worldwide.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-white hover:text-primary transition-colors"><i class="fa fa-facebook"></i></a>
+                    <a href="#" class="text-white hover:text-primary transition-colors"><i class="fa fa-twitter"></i></a>
+                    <a href="#" class="text-white hover:text-primary transition-colors"><i class="fa fa-linkedin"></i></a>
+                    <a href="#" class="text-white hover:text-primary transition-colors"><i class="fa fa-instagram"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="#home" class="text-gray-400 hover:text-primary transition-colors">Home</a></li>
+                    <li><a href="#about" class="text-gray-400 hover:text-primary transition-colors">About Us</a></li>
+                    <li><a href="#services" class="text-gray-400 hover:text-primary transition-colors">Services</a></li>
+                    <li><a href="#advantages" class="text-gray-400 hover:text-primary transition-colors">Advantages</a></li>
+                    <li><a href="#contact" class="text-gray-400 hover:text-primary transition-colors">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-4">Our Services</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Financial Market Analysis</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Investment Consulting</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Risk Management</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Wealth Management</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Tax Optimization</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                <ul class="space-y-2">
+                    <li class="flex items-start space-x-2">
+                        <i class="fa fa-map-marker text-primary mt-1"></i>
+                        <span class="text-gray-400">74 Duke St, Chelmsford, Essex CM1 1HS, England</span>
+                    </li>
+                    <li class="flex items-start space-x-2">
+                        <i class="fa fa-phone text-primary mt-1"></i>
+                        <span class="text-gray-400">+44 (0) 1245 260 888</span>
+                    </li>
+                    <li class="flex items-start space-x-2">
+                        <i class="fa fa-envelope text-primary mt-1"></i>
+                        <span class="text-gray-400">info@altovplus.com</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500">
+            <p>&copy; 2025 ALTOV PLUS. All rights reserved. Regulated by the Financial Conduct Authority (FCA).</p>
+        </div>
+    </div>
+</footer>
+
+<!-- JavaScript -->
+<script>
+    // Mobile Menu Toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        // Toggle icon between bars and times
+        const icon = menuBtn.querySelector('i');
+        if (icon.classList.contains('fa-bars')) {
+            icon.classList.replace('fa-bars', 'fa-times');
+        } else {
+            icon.classList.replace('fa-times', 'fa-bars');
+        }
+    });
+
+    // Page Navigation
+    const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+    const pages = document.querySelectorAll('.page');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Hide mobile menu if open
+            if (!mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.add('hidden');
+                const icon = menuBtn.querySelector('i');
+                icon.classList.replace('fa-times', 'fa-bars');
+            }
+            
+            // Get target page ID
+            const targetId = link.getAttribute('href').substring(1);
+            
+            // Deactivate all pages
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Activate target page
+            document.getElementById(targetId).classList.add('active');
+            
+            // Smooth scroll to top
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Scroll behavior for fixed header
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 50) {
+            header.classList.add('shadow-md');
+            header.classList.remove('shadow-sm');
+        } else {
+            header.classList.remove('shadow-md');
+            header.classList.add('shadow-sm');
+        }
+    });
+</script>
+</body>
+</html>
